@@ -18,7 +18,7 @@ const Editor: React.SFC<Props> = ({editor}) => {
 //const Editor = (member: Member) => {
   console.log(`Editor ${JSON.stringify(editor)}`);
   return (
-    <div>
+    <div className="Editor">
 			{/*
       editor {JSON.stringify(props)}
       Editor { props.editor.id } - { props.editor.name }

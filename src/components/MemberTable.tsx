@@ -40,7 +40,7 @@ const MemberTable: React.SFC<MemberTableProps> = ({members, onClick}) => {
     )
   })
   return (
-    <div>
+    <div className="MemberTable">
       MemberTable
       <ul>{tags}</ul>
     </div>
