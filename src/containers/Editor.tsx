@@ -1,12 +1,11 @@
 import { connect, Dispatch } from 'react-redux'
 import Editor from  '../components/Editor'
 import { Member, StoreState } from '../types'
-import { Action, setValueToTable } from '../actions'
+import { Action, setValueToTable, changeValueInEditor } from '../actions'
 
 //const mapStateToProps = (state: any) => ({
 //const mapStateToProps = (state: Member) => ({
 const mapStateToProps = (state: StoreState) => {
-  console.log(`mapStateToProps ${JSON.stringify(state.editor)}`);
   return {
 	  //member: state.editor
 	  editor: state.editor
@@ -16,14 +15,23 @@ const mapStateToProps = (state: StoreState) => {
 export interface IEditor {
   editor: Member;
 }
+//type Props = {
+//	editor: Member;
+//};
+
+//type State = {
+//  editor: Member;
+//};
+
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>, ownProps: IEditor) => {
-  console.log(`mapDispatchToProps ${JSON.stringify(ownProps)}`)
-
   return {
     onClick: (member: Member) => {
-      console.log(`onClick ${JSON.stringify(member)}`)
       dispatch(setValueToTable(member))
+    },
+
+    onChange: (member: Member) => {
+      dispatch(changeValueInEditor(member))
     }
   }
 }
@@ -32,4 +40,5 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>, ownProps: IEditor) => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Editor)
+)(Editor as any)
+//)(Editor)

@@ -1,35 +1,65 @@
-//import React, { Component } from 'react'
 import * as React from 'react'
 import { Member } from '../types'
 
-//const InputForm = (state) => class extends Component {
-//}
 type Props = {
 	editor: Member;
-	//style?: React.CSSProperties,
-}
+  onClick: any;
+  onChange: any;
+};
 
-//const Editor = ({member}) => {
-//const Editor = ({member}: Member) => {
-//const Editor = ({member: Member}) => {
-//const Editor: React.SFC<Props> = (props) => {
-//const Editor: React.SFC<Props> = (editor) => {
-const Editor: React.SFC<Props> = ({editor}) => {
-//const Editor = (member: Member) => {
-  console.log(`Editor ${JSON.stringify(editor)}`);
-  return (
-    <div className="Editor">
-			{/*
-      editor {JSON.stringify(props)}
-      Editor { props.editor.id } - { props.editor.name }
-      Editor { editor.id } - { editor.name }
-      editor {JSON.stringify(editor)}
-      Editor { editor["id"] } - { editor["name"] }
-				*/}
+type State = {
+  editor: Member;
+};
 
-      Editor { editor.id } - { editor.name }
-    </div>
-  )
+export class Editor extends React.Component<Props, State> {
+  //state: State = this.props.editor;
+  state: State = {
+    editor: this.props.editor,
+  }
+
+  handleSubmit = (event: any) => {
+    alert("A name was submitted: " + JSON.stringify(this.state.editor));
+    event.preventDefault();
+    this.props.onClick(this.props.editor);
+  }
+
+  handleChange = (event: any) => {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      editor: { ...this.state.editor, [name]: value }
+    });
+  }
+
+  render(){
+    const editor = this.state.editor;
+
+    return (
+      <div className="Editor">
+        Editor { editor.id } - { editor.name }
+        <br/>
+        <form onSubmit={this.handleSubmit}>
+          {
+            Object.keys(editor).map(key => {
+              console.log(`key = ${key} value = ${this.state[key]}`);
+              return (
+                <div>
+                  <label key={key}>{key}</label>:
+                  <input name={key} type="text" 
+                  value={this.state[key]}
+                  onChange={ e => this.handleChange(e) } />
+                  <br/>
+                </div>
+              );
+            })
+          }
+          <input name="submit" type="submit" value="submit" />
+        </form>
+      </div>
+    )
+  }
 }
 
 export default Editor;

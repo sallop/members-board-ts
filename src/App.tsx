@@ -60,10 +60,11 @@ class App extends React.Component<{},{}> {
   render() {
     const editor = members[0];
     return (
-      <div>
+      <div className="App">
         <Editor editor={editor}/>
         {/*
         <MemberTable {...members}/>
+        <MemberTable members={members} onClick={ ()=>{ console.log("App onClick");} }/>
         */}
         <MemberTable members={members}/>
       </div>
@@ -71,16 +72,3 @@ class App extends React.Component<{},{}> {
   }
 }
 export default App;
-
-//return <Hello name="TypeScript" enthusiasmLevel={10}/>
-//return (
-//  <div className="App">
-//    <div className="App-header">
-//      <img src={logo} className="App-logo" alt="logo" />
-//      <h2>Welcome to React</h2>
-//    </div>
-//    <p className="App-intro">
-//      To get started, edit <code>src/App.tsx</code> and save to reload.
-//    </p>
-//  </div>
-//);

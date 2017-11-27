@@ -51,7 +51,13 @@ export interface SetValueToTable {
 	error?: boolean;
 }
 
-export type Action = SetValueToEditor | SetValueToTable;
+export interface ChangeValueInEditor {
+  type: constants.CHANGE_VALUE_IN_EDITOR;
+  payload: { changed: Member };
+  error?: boolean;
+}
+
+export type Action = SetValueToEditor | SetValueToTable | ChangeValueInEditor;
 
 ////http://www.mattgreer.org/articles/typescript-react-and-redux/
 //interface Action<T> {
@@ -82,4 +88,12 @@ export function setValueToTable(edited: Member) : Action {
 		payload: { edited }
 		//payload: { members }
 	}
+}
+
+export function changeValueInEditor(changed: Member) : Action {
+  console.log(`changeValueInEditor ${changed}`);
+  return {
+    type: constants.CHANGE_VALUE_IN_EDITOR,
+    payload: { changed }
+  }
 }

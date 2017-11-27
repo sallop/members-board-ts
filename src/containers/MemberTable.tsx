@@ -19,6 +19,7 @@ const mapStateToProps = (state: StoreState) => {
 export interface IMemberTable {
   //initialCount: number,
   members: Member[];
+  //onClick: any;
 }
 
 //const mapDispatchToProps = (dispatch: Dispatch, ownProps) => {

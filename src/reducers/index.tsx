@@ -1,18 +1,3 @@
-//import * as actions from '../actions';
-//import { EnthusiasmAction } from '../actions';
-//import { StoreState } from '../types/index';
-//import { INCREMENT_ENTHUSIASM, DECREMENT_ENTHUSIASM } from '../constants/index';
-
-//export function enthusiasm(state: StoreState, action: EnthusiasmAction): StoreState {
-//  switch (action.type) {
-//    case INCREMENT_ENTHUSIASM:
-//      return { ...state, enthusiasmLevel: state.enthusiasmLevel + 1 };
-//    case DECREMENT_ENTHUSIASM:
-//      return { ...state, enthusiasmLevel: Math.max(1, state.enthusiasmLevel - 1)};
-//  }
-
-//  return state;
-//}
 import { Action } from '../actions'
 import { StoreState, Member } from '../types'
 import * as constants from '../constants'
@@ -102,7 +87,11 @@ export default function reducer(state: StoreState = initialState(), action: Acti
 		return { ...state, members: members };
 		//return { ...state, members: action.payload.edited};
 		//return { ...state, edited: action.payload.edited};
-
+    case constants.CHANGE_VALUE_IN_EDITOR:
+      let changed = action.payload.changed;
+      console.log(`CHANGE_VALUE_IN_EDITOR ${JSON.stringify(action.payload)}`)
+      console.log(`changed ${JSON.stringify(changed)}`)
+      return { ...state, editor: changed };
 	default:
 		console.log(`default ${JSON.stringify(state)}`)
 		return state
