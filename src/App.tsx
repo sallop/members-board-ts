@@ -9,8 +9,8 @@ import MemberTable from './containers/MemberTable'
 import './App.css';
 
 let members: Member[] = [{
-  "id": 1,
-  "group": 1,
+  "id": "1",
+  "group": "1",
   "name": "Arthur Dent",
   "pronounce": "",
   "spiritualName": "Arthur",
@@ -20,8 +20,8 @@ let members: Member[] = [{
   "address": "9999-9999",
   "info": ""
 },{
-  "id": 2,
-  "group": 2,
+  "id": "2",
+  "group": "2",
   "name": "Ford Prefect",
   "pronounce": "",
   "spiritualName": "ford",
@@ -31,8 +31,8 @@ let members: Member[] = [{
   "address": "444-4444",
   "info": ""
 },{
-  "id": 3,
-  "group": 3,
+  "id": "3",
+  "group": "3",
   "name": "Trillian",
   "pronounce": "",
   "spiritualName": "trillian",
@@ -42,8 +42,8 @@ let members: Member[] = [{
   "address": "333-3333",
   "info": ""
 },{
-  "id": 4,
-  "group": 3,
+  "id": "4",
+  "group": "3",
   "name": "Trillian",
   "pronounce": "",
   "spiritualName": "trillian",

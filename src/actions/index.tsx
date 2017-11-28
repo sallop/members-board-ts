@@ -85,13 +85,12 @@ export function setValueToTable(edited: Member) : Action {
   console.log(`setValueToTable = ${JSON.stringify(edited)}`);
 	return {
 		type: constants.SET_VALUE_TO_TABLE,
-		payload: { edited }
-		//payload: { members }
+		payload: { edited } // NOTE: type information `id:number` is deleted
 	}
 }
 
 export function changeValueInEditor(changed: Member) : Action {
-  console.log(`changeValueInEditor ${changed}`);
+  console.log(`changeValueInEditor ${JSON.stringify(changed)}`);
   return {
     type: constants.CHANGE_VALUE_IN_EDITOR,
     payload: { changed }

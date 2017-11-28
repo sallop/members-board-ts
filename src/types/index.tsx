@@ -4,8 +4,10 @@
 //}
 
 export type Member = {
-  id: number,
-  group: number,
+  //id: number,  it can't detect type in action.payload
+  id: string,
+  //group: number,
+  group: string,
   name: string,
   pronounce: string,
   spiritualName: string,

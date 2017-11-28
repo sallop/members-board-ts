@@ -25,6 +25,7 @@ const MemberTable: React.SFC<MemberTableProps> = ({members, onClick}) => {
   //};
   //var tags: React.SFC<any> = [];
   //var tags: React.Element<any> = [];
+  console.log(`MemberTable.render`)
   console.log(`members = ${JSON.stringify(members)}`)
   console.log(`onClick = ${JSON.stringify(onClick)}`)
   Object.keys(members).map((k,idx)=>{

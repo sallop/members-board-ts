@@ -20,13 +20,19 @@ export class Editor extends React.Component<Props, State> {
   handleSubmit = (event: any) => {
     alert("A name was submitted: " + JSON.stringify(this.state.editor));
     event.preventDefault();
-    this.props.onClick(this.props.editor);
+    //this.props.onClick(this.props.editor);
+    this.props.onClick(this.state.editor);
   }
 
   handleChange = (event: any) => {
     const target = event.target;
     const value = target.value;
     const name = target.name;
+
+    //console.log(`target = ${JSON.stringify(target)}`)
+    console.log(`target = ${target}`)
+    console.log(`value  = ${value}`)
+    console.log(`name   = ${name}`)
 
     this.setState({
       editor: { ...this.state.editor, [name]: value }

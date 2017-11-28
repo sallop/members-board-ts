@@ -3,8 +3,8 @@ import { StoreState, Member } from '../types'
 import * as constants from '../constants'
 
 const mockData: Member[] = [{
-  "id": 1,
-  "group": 1,
+  "id": "1",
+  "group": "1",
   "name": "Arthur Dent",
   "pronounce": "",
   "spiritualName": "Arthur",
@@ -14,8 +14,8 @@ const mockData: Member[] = [{
   "address": "9999-9999",
   "info": ""
 },{
-  "id": 2,
-  "group": 2,
+  "id": "2",
+  "group": "2",
   "name": "Zaphod Beeblebrox",
   "pronounce": "",
   "spiritualName": "zaphod",
@@ -25,8 +25,8 @@ const mockData: Member[] = [{
   "address": "222-2222",
   "info": ""
 },{
-  "id": 3,
-  "group": 3,
+  "id": "3",
+  "group": "3",
   "name": "Trillian",
   "pronounce": "",
   "spiritualName": "trillian",
@@ -36,8 +36,8 @@ const mockData: Member[] = [{
   "address": "333-3333",
   "info": ""
 },{
-  "id": 4,
-  "group": 4,
+  "id": "4",
+  "group": "4",
   "name": "Ford Prefect",
   "pronounce": "",
   "spiritualName": "ford",
@@ -47,8 +47,8 @@ const mockData: Member[] = [{
   "address": "444-4444",
   "info": ""
 },{
-  "id": 5,
-  "group": 5,
+  "id": "5",
+  "group": "5",
   "name": "Vogon",
   "pronounce": "",
   "spiritualName": "vogon",
@@ -73,17 +73,30 @@ export default function reducer(state: StoreState = initialState(), action: Acti
   console.log(`action.type = ${action.type}`)
 	switch(action.type){
 	case constants.SET_VALUE_TO_EDITOR:
-		console.log(`SET_VALUE_TO_EDITOR ${JSON.stringify(action.payload)}`)
-		//return { ...payload.member }
-		//return { ...state, editor: payload.editor};
 		return { ...state, editor: action.payload.editor};
-	// return { ...state, ...newState }
+	  // return { ...state, ...newState }
 	case constants.SET_VALUE_TO_TABLE:
     //let members: Member[] = mockData;
     let edited = action.payload.edited;
     let members: Member[] = [edited, edited, edited];
+    //let members: Member[] = state.members;
 		console.log(`SET_VALUE_TO_TABLE: ${JSON.stringify(action.payload)}`)
-    console.log(`edited ${edited}`)
+    console.log(`edited ${JSON.stringify(edited)}`)
+    //members.forEach((member, index, array) => {
+    //  if (member.id === edited.id) {
+    //    console.log(`if (member.id === edited.id) {{`)
+    //    array[index] = edited
+    //  }
+    //})
+    console.log(`members ${JSON.stringify(members)}`)
+    //Object.keys(members).map(key => {
+    //  console.log(`before: ${JSON.stringify(members)}`);
+    //  const member = members[key];
+    //  if( edited.id === member.id ){
+    //    members[key] = edited;
+    //    console.log(`after : ${JSON.stringify(members)}`);
+    //  }
+    //})
 		return { ...state, members: members };
 		//return { ...state, members: action.payload.edited};
 		//return { ...state, edited: action.payload.edited};
