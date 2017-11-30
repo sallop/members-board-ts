@@ -78,16 +78,17 @@ export default function reducer(state: StoreState = initialState(), action: Acti
 	case constants.SET_VALUE_TO_TABLE:
     //let members: Member[] = mockData;
     let edited = action.payload.edited;
-    let members: Member[] = [edited, edited, edited];
-    //let members: Member[] = state.members;
+    //let members: Member[] = [edited, edited, edited];
+    //let members: Member[] = state.members; // Error: shallow copy doesn't work for component update 
+    let members: Member[] = [...state.members];
 		console.log(`SET_VALUE_TO_TABLE: ${JSON.stringify(action.payload)}`)
     console.log(`edited ${JSON.stringify(edited)}`)
-    //members.forEach((member, index, array) => {
-    //  if (member.id === edited.id) {
-    //    console.log(`if (member.id === edited.id) {{`)
-    //    array[index] = edited
-    //  }
-    //})
+    members.forEach((member, index, array) => {
+      if (member.id === edited.id) {
+        console.log(`if (member.id === edited.id) {{`)
+        array[index] = edited
+      }
+    })
     console.log(`members ${JSON.stringify(members)}`)
     //Object.keys(members).map(key => {
     //  console.log(`before: ${JSON.stringify(members)}`);
