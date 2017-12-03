@@ -40,7 +40,10 @@ export class Editor extends React.Component<Props, State> {
   }
 
   render(){
-    const editor = this.state.editor;
+    console.log(`src/components/Editor.tsx`)
+    //const editor = this.state.editor; // Error: action was dispatched by props
+    const editor = this.props.editor;
+    console.log(`editor: ${JSON.stringify(editor)}`)
 
     return (
       <div className="Editor">
@@ -49,7 +52,7 @@ export class Editor extends React.Component<Props, State> {
         <form onSubmit={this.handleSubmit}>
           {
             Object.keys(editor).map(key => {
-              console.log(`key = ${key} value = ${this.state[key]}`);
+              //console.log(`key = ${key} value = ${this.state[key]}`);
               return (
                 <div>
                   <label key={key}>{key}</label>:
