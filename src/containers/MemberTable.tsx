@@ -11,8 +11,8 @@ import { Action, setValueToEditor } from '../actions'
 //const mapStateToProps = (state: any) => {
 //const mapStateToProps = (state: Member[]) => {
 const mapStateToProps = (state: StoreState) => {
-  console.log("mapStateToProps");
-  console.log(`${JSON.stringify(state.members)}`);
+  //console.log("mapStateToProps");
+  //console.log(`${JSON.stringify(state.members)}`);
 	return { members: state.members }
 }
 

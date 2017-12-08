@@ -53,7 +53,8 @@ export interface SetValueToTable {
 
 export interface ChangeValueInEditor {
   type: constants.CHANGE_VALUE_IN_EDITOR;
-  payload: { changed: Member };
+  //payload: { changed: Member };
+  payload: { name: any, value: any };
   error?: boolean;
 }
 
@@ -89,10 +90,13 @@ export function setValueToTable(edited: Member) : Action {
 	}
 }
 
-export function changeValueInEditor(changed: Member) : Action {
-  console.log(`changeValueInEditor ${JSON.stringify(changed)}`);
+//export function changeValueInEditor(changed: Member) : Action {
+export function changeValueInEditor(name: any, value: any) : Action {
+  //console.log(`changeValueInEditor ${JSON.stringify(changed)}`);
+  console.log(`changeValueInEditor ${name} ${value}`);
   return {
     type: constants.CHANGE_VALUE_IN_EDITOR,
-    payload: { changed }
+    //payload: { changed }
+    payload: { name, value }
   }
 }

@@ -27,11 +27,16 @@ export interface IEditor {
 const mapDispatchToProps = (dispatch: Dispatch<Action>, ownProps: IEditor) => {
   return {
     onClick: (member: Member) => {
+      console.log(`container/Editor.tsx`)
+      console.log(`member = ${member}`)
       dispatch(setValueToTable(member))
     },
 
-    onChange: (member: Member) => {
-      dispatch(changeValueInEditor(member))
+    //onChange: (member: Member) => {
+    onChange: (name: any, value: any) => {
+      //console.log(`onChange ${JSON.stringify(member)}`);
+      //dispatch(changeValueInEditor(member))
+      dispatch(changeValueInEditor(name, value))
     }
   }
 }

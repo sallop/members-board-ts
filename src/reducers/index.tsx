@@ -70,10 +70,15 @@ function initialState(): StoreState {
 export default function reducer(state: StoreState = initialState(), action: Action) : StoreState {
 	//let { type, payload } = action
 	//switch(type){
+  console.log(`reducer`)
   console.log(`action.type = ${action.type}`)
 	switch(action.type){
 	case constants.SET_VALUE_TO_EDITOR:
-		return { ...state, editor: action.payload.editor};
+    let editor = { ...action.payload.editor }
+    console.log(`constants.SET_VALUE_TO_EDITOR`)
+    console.log(`editor: ${JSON.stringify(editor)}`)
+		return { ...state, editor };
+		//return { ...state, editor: action.payload.editor};
 	  // return { ...state, ...newState }
 	case constants.SET_VALUE_TO_TABLE:
     //let members: Member[] = mockData;
@@ -98,13 +103,22 @@ export default function reducer(state: StoreState = initialState(), action: Acti
     //    console.log(`after : ${JSON.stringify(members)}`);
     //  }
     //})
-		return { ...state, members: members };
+		//return { ...state, members: members };
+		return { ...state, members };
 		//return { ...state, members: action.payload.edited};
 		//return { ...state, edited: action.payload.edited};
     case constants.CHANGE_VALUE_IN_EDITOR:
-      let changed = action.payload.changed;
+      //let changed = action.payload.changed;
+      let { name, value } = action.payload;
       console.log(`CHANGE_VALUE_IN_EDITOR ${JSON.stringify(action.payload)}`)
-      console.log(`changed ${JSON.stringify(changed)}`)
+      console.log(`name ${name} value ${value}`)
+      console.log(`state.editor ${JSON.stringify(state.editor)}`)
+      //let changed : Member = [...state.editor]; // any[] is not assignable to type 'Member'
+      let changed : Member = { ...state.editor };
+      changed[name] = value;
+      //NOTE: need to instantinate modified Member
+      //console.log(`changed ${JSON.stringify(changed)}`)
+      //return { ...state, editor: changed };
       return { ...state, editor: changed };
 	default:
 		console.log(`default ${JSON.stringify(state)}`)
