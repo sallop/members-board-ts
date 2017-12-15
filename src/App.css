@@ -6,18 +6,49 @@
 }
 
 .Editor {
+  float: left;
   position: relative;
+  /*
   top: 20px;
   left: 20px;
+  */
   /*
    * background-color: blue;
-    height: 20px;
-    width: 240px;  
-   */
+  height: 120px;
   background-color: hsla(0, 100%, 50%, 0.3);
-
-
+   */
+  width: 340px;  
+  background-color: rosybrown;
+  padding: 5px;
+  /*
+  border-color: blue;
+  border: 1px solid black;
+   */ 
+  border: 1px solid black;
 }
+
+.Editor label {
+  float: left;
+  width: 7em;
+  margin-right: 1em;
+  /*
+  background-color: red;
+   */ 
+  background-color: thistle;
+  border: 1px solid black;
+}
+
+.Editor input[type=text] {
+  /*
+  background-color: grey;
+   */ 
+  background-color: silver;
+}
+
+.Editor input[type=submit] {
+  background-color: lightblue;
+}
+
 
 .InputForm {
   position: relative;
@@ -30,17 +61,56 @@
 
 
 .MemberTable {
+  /* float: left; */
+  float: left;
   position: relative;
+  /*
   top: 40px;
   left: 20px;
+  */
   /*
   background-color: green;
   height: 120px;
   width: 240px;
-   */
   background-color: hsla(0, 100%, 70%, 0.3);
-
+  */
+  background-color: lightsteelblue;
 }
+
+.MemberTable ul {
+  /* list-style-type: square; */
+  /*
+
+  font-size: 0;
+  border: 1px solid slategray;
+   */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  list-style-type: none;
+}
+
+.MemberTable ul li {
+  /* list-style-type: square; */
+  /*
+  border: 0.5px solid grey;
+  width: 33.3%;
+  height: 33.3%;
+  border: 3px solid grey;
+  border: 3px solid cadetblue;
+  border: 3px solid olive;
+  border: 3px solid royalblue;
+  */
+  border: 3px solid slategray;
+  padding: 3px 0px 0px 3px;
+}
+
+
+
+.MemberTable-list {
+  border: 1, 1, 1, 1
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

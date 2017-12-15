@@ -29,7 +29,7 @@ const MemberTable: React.SFC<MemberTableProps> = ({members, onClick}) => {
   //console.log(`members = ${JSON.stringify(members)}`)
   //console.log(`onClick = ${JSON.stringify(onClick)}`)
   Object.keys(members).map((k,idx)=>{
-    tags.push(<li key={idx} onClick={ 
+    tags.push(<li className="MemberTable-list" key={idx} onClick={ 
       () => { 
         const member = members[idx];
         //console.log(`idx = ${idx}`); 

@@ -58,7 +58,7 @@ export class Editor extends React.Component<Props, State> {
               // value={this.state[key]} // Error: this.state[key] is empty
               return (
                 <div>
-                  <label key={key}>{key}</label>:
+                  <label key={key}>{key}</label>
                   <input name={key} type="text" 
                     value={this.props.editor[key]}
                     onChange={ e => this.handleChange(e) } />

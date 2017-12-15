@@ -61,12 +61,12 @@ class App extends React.Component<{},{}> {
     const editor = members[0];
     return (
       <div className="App">
+        <MemberTable members={members}/>
         <Editor editor={editor}/>
         {/*
         <MemberTable {...members}/>
         <MemberTable members={members} onClick={ ()=>{ console.log("App onClick");} }/>
         */}
-        <MemberTable members={members}/>
       </div>
     );
   }
