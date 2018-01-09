@@ -7,12 +7,19 @@ import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
-import { createStore } from 'redux';
+//import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 //import { enthusiasm } from './reducers/index';
 import rootReducer from './reducers';
 import { StoreState } from './types/index';
 
-const store = createStore<StoreState>(rootReducer);
+const store = createStore<StoreState>(
+  rootReducer,
+  applyMiddleware(
+    thunkMiddleware, // lets us dispatch() functions
+  )
+);
 
 //const store = createStore<StoreState>(enthusiasm, {
 //  enthusiasmLevel: 1,
