@@ -7,6 +7,7 @@ interface MemberTableProps {
 	members: Member[];
   //onClick: () => void;
   onClick: any;
+  onClickUpdate: any;
 }
 
 //class MemberTable extends React.StatelessComponent<MemberTableProps, void>{
@@ -18,8 +19,16 @@ interface MemberTableProps {
 //const MemberTable: React.SFC<MemberTableProps> = (members, onClick) => {
 //const MemberTable: React.SFC<MemberTableProps> = ({members}, onClick) => {
 //const MemberTable: React.SFC<MemberTableProps> = ({members, onClick}) => {
-const MemberTable: React.SFC<MemberTableProps> = ({members, onClick}) => {
+//const MemberTable: React.SFC<MemberTableProps> = ({members, onClick}) => {
+const MemberTable: React.SFC<MemberTableProps> = ({members, onClick, onClickUpdate}) => {
   var tags: any[] = [];
+
+ //const handleClick = (x : string) => {
+ const handleClickUpdate = (x : string) => {
+   console.log(`handle update ${x}`);
+   onClickUpdate();
+ }
+  
   //var onClick = () => {
   //  console.log(`members = ${JSON.stringify(members)}`)
   //};
@@ -43,7 +52,13 @@ const MemberTable: React.SFC<MemberTableProps> = ({members, onClick}) => {
   return (
     <div className="MemberTable">
       MemberTable
+      <br/>
       <ul>{tags}</ul>
+      {/*
+      <button onClick={handleClick.call(this,"args")}>update</button>
+      <button onClick={handleClick.bind(null, "args")}>update</button>
+        */}
+      <button onClick={ () => handleClickUpdate("args")}>update</button>
     </div>
   );
 }

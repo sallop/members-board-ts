@@ -1,6 +1,11 @@
 import * as constants from '../constants'
 import { Member } from '../types/index'
-
+import { Dispatch } from 'redux'
+import { ThunkAction } from 'redux-thunk';
+//import thunk, { ThunkAction } from '../index.d.ts';
+//import fetch from 'cross-fetch';
+//import fetch from 'whatwg-fetch';
+import 'whatwg-fetch';
 // import { createAction } from 'redux-actions'
 // export const addTodo = createAction<TodoItemData>(Actions.ADD_TODO);
 // export const editTodo = createAction<TodoItemData>(Actions.EDIT_TODO);
@@ -58,7 +63,14 @@ export interface ChangeValueInEditor {
   error?: boolean;
 }
 
-export type Action = SetValueToEditor | SetValueToTable | ChangeValueInEditor;
+//export type Action = SetValueToEditor | SetValueToTable | ChangeValueInEditor;
+export interface FetchMembers {
+  type: constants.FETCH_MEMBERS;
+  payload: { members: any};
+  error?: boolean;
+}
+
+export type Action = SetValueToEditor | SetValueToTable | ChangeValueInEditor | FetchMembers;
 
 ////http://www.mattgreer.org/articles/typescript-react-and-redux/
 //interface Action<T> {
@@ -100,3 +112,64 @@ export function changeValueInEditor(name: any, value: any) : Action {
     payload: { name, value }
   }
 }
+
+//export function fetchMembers(): any {
+  //return function(dispatch: any): any {
+export function fetchMembers( members: any ): ThunkAction<Promise<string>, Action, null> {
+
+  return function(dispatch: Dispatch<Action>): any {
+    console.log(`fetchMembers`);
+    //console.log(`dispatch = ${dispatch}`);
+    dispatch({
+      type: constants.FETCH_MEMBERS,
+      payload: { members }
+    });
+ 
+    return fetch(`http://localhost:3000/mockData.json`)
+    //return fetch(`/mockData.json`) // OK
+    //return fetch(`mockData.json`) // OK
+    //return fetch(`mockDatum.json`) // NG
+      .then( response => response.json() )
+      .then( json => console.log(`json = ${JSON.stringify(json)}`) )
+      //.then( json => dispatch())
+          
+    //return new Promise<string>((resolve, reject) => {
+    //  resolve('done!');
+    //});
+  }
+}
+  // return (dispatch, getState) => { /*...*/ }
+
+  // return new Promise<string>((resolve, reject) => {
+  //   // do async stuff with getState() and dispatch(), then ...
+  //   resolve('done!');
+  // });
+
+// https://github.com/gaearon/redux-thunk/issues/103
+// dupski, cr0ck
+// export interface IItem {
+//   id: string;
+// }
+// 
+// export type LoadItem<R> = (id: strinig) => R;
+// 
+// export const loadItem: LoadItem<ThunkAction<
+//   <Promise<IItem>, IState, IExtraArgument>>> = (id) => {
+//     return (dispatch<IState>, getState) => {
+//     }
+// };
+
+// redux/examples/async
+// const fetchPosts = subreddit => dispatch => {
+//   dispatch( requestPosts(subreddit));
+//   return fetch(`https://www.reddit.com/r/${subreddit}.json`)
+//           .then( response => response.json() )
+//           .then( json => dispatch( receivePosts(subreddit, json )))
+// }
+
+// export const fetchPostsIfNeeded = subreddit => (dispatch, getState) => {
+//   if (shouldFetchPosts( getState(), subreddit )) {
+//     return dispatch( fetchPosts(subreddit) );
+//   }
+// }
+

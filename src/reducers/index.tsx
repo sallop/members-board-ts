@@ -120,6 +120,10 @@ export default function reducer(state: StoreState = initialState(), action: Acti
       //console.log(`changed ${JSON.stringify(changed)}`)
       //return { ...state, editor: changed };
       return { ...state, editor: changed };
+
+    case constants.FETCH_MEMBERS:
+      console.log(`action ${JSON.stringify(action)}`);
+      return { ...state };
 	default:
 		console.log(`default ${JSON.stringify(state)}`)
 		return state

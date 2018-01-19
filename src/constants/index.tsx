@@ -16,6 +16,9 @@ export type SUBMIT_ON_EDITOR = typeof SUBMIT_ON_EDITOR;
 export const CHANGE_VALUE_IN_EDITOR = 'CHANGE_VALUE_IN_EDITOR';
 export type CHANGE_VALUE_IN_EDITOR = typeof CHANGE_VALUE_IN_EDITOR;
 
+export const FETCH_MEMBERS = 'FETCH_MEMBERS';
+export type FETCH_MEMBERS = typeof FETCH_MEMBERS;
+
 
 
 export const MEMBER = {

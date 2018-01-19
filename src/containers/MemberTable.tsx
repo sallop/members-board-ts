@@ -2,7 +2,7 @@ import { connect, Dispatch } from 'react-redux'
 import { Member } from '../types'
 import MemberTable from '../components/MemberTable'
 import { StoreState } from '../types'
-import { Action, setValueToEditor } from '../actions'
+import { Action, setValueToEditor, fetchMembers } from '../actions'
 //import * from '../actions'
 //import { RootState, Dispatch } from '@src/redux'
 //import { Dispatch } from '@src/redux'
@@ -38,6 +38,14 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>, ownProps: IMemberTable) 
       console.log(`onClick ${JSON.stringify(member)}`)
       //dispatch(() => { console.log(JSON.stringify(member)); })
       dispatch(setValueToEditor(member))
+    },
+    onClickUpdate: () => {
+      console.log("onClickUpdate");
+      var f = fetchMembers("members");
+      console.log(`f = ${f}`);
+      dispatch(f);
+      //f("dispatch args");
+      //f(dispatch);
     }
   }
 }

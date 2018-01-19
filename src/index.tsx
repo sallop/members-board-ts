@@ -21,6 +21,8 @@ const store = createStore<StoreState>(
   )
 );
 
+console.log('initial state ' + JSON.stringify(store.getState(), undefined, 2));
+
 //const store = createStore<StoreState>(enthusiasm, {
 //  enthusiasmLevel: 1,
 //  languageName: 'TypeScript',
