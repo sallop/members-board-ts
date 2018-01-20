@@ -1,7 +1,7 @@
 [{
   "id": "1",
   "group": "1",
-  "name": "Arthur Dent",
+  "name": "Arthur Dent mock",
   "pronounce": "",
   "spiritualName": "Arthur",
   "birthday": "1991/9/11",
@@ -12,7 +12,7 @@
 },{
   "id": "2",
   "group": "2",
-  "name": "Zaphod Beeblebrox",
+  "name": "Zaphod Beeblebrox mock",
   "pronounce": "",
   "spiritualName": "zaphod",
   "birthday": "1991/2/11",

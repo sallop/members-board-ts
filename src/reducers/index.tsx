@@ -122,8 +122,23 @@ export default function reducer(state: StoreState = initialState(), action: Acti
       return { ...state, editor: changed };
 
     case constants.FETCH_MEMBERS:
-      console.log(`action ${JSON.stringify(action)}`);
-      return { ...state };
+      //var { status, members } = action.payload;
+      if ('request' === action.payload.status) {
+        console.log('fetch request');
+        return { ...state };
+      } else if ('failure' === action.payload.status) {
+        console.log('fetch failure');
+        return { ...state };
+      } else if ('success' === action.payload.status) {
+        console.log('fetch success');
+        return { ...state, members: action.payload.members }; //NOTE: Is this shall copy or not?
+      } else {
+        console.log('fetch ');
+        return { ...state };
+      }
+      //console.log(`action ${JSON.stringify(action)}`);
+      //return { ...state };
+
 	default:
 		console.log(`default ${JSON.stringify(state)}`)
 		return state
