@@ -86,10 +86,13 @@ export function setValueToTable(edited: Member) : Action {
 //export function changeValueInEditor(changed: Member) : Action {
 export function changeValueInEditor(name: any, value: any) : Action {
   //console.log(`changeValueInEditor ${JSON.stringify(changed)}`);
-  console.log(`changeValueInEditor ${name} ${value}`); return { type:
-    constants.CHANGE_VALUE_IN_EDITOR,
+  console.log(`changeValueInEditor ${name} ${value}`);
+  return {
+    type: constants.CHANGE_VALUE_IN_EDITOR,
     //payload: { changed }
-    payload: { name, value } } }
+    payload: { name, value }
+  }
+}
 
 //export function fetchMembers(): any { return function(dispatch:
 //any): any {
@@ -107,21 +110,29 @@ ThunkAction<Promise<string>, Action, null> {
       }
     });
  
-    return fetch(`http://localhost:3000/mockData.json`)
+    //return fetch(`http://localhost:3000/mockDat.json`) //Unhandled Rejection (SyntaxError):
     //return fetch(`/mockData.json`) // OK
     //return fetch(`mockData.json`) // OK
     //return fetch(`mockDatum.json`) // NG
-      .then( response => response.json(),
-             error => {
-               console.log('An error occurred.')
-               dispatch({
-                 type: constants.FETCH_MEMBERS,
-                 payload: {
-                   status: 'error',
-                   members: {}
-                 }
-               });
-             })
+    return fetch(`http://localhost:3000/mockData.json`)
+      .then( response => {
+        if (!response.ok) {
+          //NOTE: https://www.tjvantoll.com/2015/09/13/fetch-and-errors/
+          throw Error( response.statusText );
+        }
+        console.log(`response = ${JSON.stringify(response)}`)
+        return response.json();
+      },
+      error => {
+        console.log('An error occurred.')
+        dispatch({
+          type: constants.FETCH_MEMBERS,
+          payload: {
+            status: 'error',
+            members: {}
+          }
+        });
+      })
       .then( json => {
         console.log(`json = ${JSON.stringify(json)}`);
         dispatch({
